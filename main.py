@@ -64,7 +64,17 @@ def draw_top_bar(win, elapsed_time, targets_pressed, misses):
     pygame.draw.rect(win, "grey", (0, 0, WIDTH, TOP_BAR_HEIGHT))
     time_label = LABEL_FONT.render(f'Time: {format_time(elapsed_time)}', True, "black")
 
+    speed = round(targets_pressed / elapsed_time, 1)
+    speed_label = LABEL_FONT.render(f"Speed: {speed} t/s", True, "black")
+
+    hits_label = LABEL_FONT.render(f"Hits: {targets_pressed}", True, "black")
+
+    lives_label = LABEL_FONT.render(f"Lives: {LIVES - misses}", True, "black")
+
     win.blit(time_label, (5, 5))
+    win.blit(speed_label, (200, 5))
+    win.blit(hits_label, (450, 5))
+    win.blit(lives_label, (650, 5))
 
 
 def draw(win, targets):
